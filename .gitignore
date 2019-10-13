@@ -1,0 +1,6 @@
+.idea
+.env
+www/*
+!docker.lnmp
+!docker.test
+
