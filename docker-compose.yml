@@ -5,7 +5,7 @@ services:
     build:
       context: ./services/nginx
       args:
-        NGINX_VERSION: ${NGINX_VERSION}
+        NGINX_VERSION: ${NGINX_VERSION}-alpine
     ports:
       - "${NGINX_HTTP_HOST_PORT}:80"
     volumes:
@@ -17,7 +17,8 @@ services:
     build:
       context: ./services/php
       args:
-        PHP_VERSION: ${PHP_VERSION}-fpm-alpine
+        PHP_VERSION: ${PHP_VERSION}-fpm
+        CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
     volumes:
       - ${WWW_DIR}:/www:rw
 

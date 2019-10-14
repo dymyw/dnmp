@@ -1,6 +1,6 @@
 .idea
+.DS_Store
 .env
 www/*
-!docker.lnmp
-!docker.test
-
+!www/docker.lnmp/
+!www/docker.test/
