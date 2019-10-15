@@ -11,6 +11,7 @@ services:
     volumes:
       - ${WWW_DIR}:/www:rw
       - ${NGINX_CONFD_DIR}:/etc/nginx/conf.d/:rw
+      - ${NGINX_CONF_FILE}:/etc/nginx/nginx.conf:ro
       - ${NGINX_LOG_DIR}:/var/log/nginx/:rw
 
   php:
@@ -22,6 +23,9 @@ services:
         PHP_EXTENSIONS: "${PHP_EXTENSIONS}"
     volumes:
       - ${WWW_DIR}:/www:rw
+      - ${PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+      - ${PHP_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
+      - ${PHP_LOG_DIR}:/var/log/php:rw
 
   mysql:
     image: mysql:${MYSQL_VERSION}

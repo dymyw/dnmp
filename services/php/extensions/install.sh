@@ -104,6 +104,7 @@ if [ -z "${PHP_EXTENSIONS##*xdebug*}" ]; then
     echo "-------- Install xdebug --------"
     pecl install xdebug-2.6.0
     docker-php-ext-enable xdebug
+    cp ./conf.d/xdebug.ini /usr/local/etc/php/conf.d/
 fi
 
 if [ -z "${PHP_EXTENSIONS##*xhprof*}" ]; then
@@ -112,10 +113,12 @@ if [ -z "${PHP_EXTENSIONS##*xhprof*}" ]; then
     tar -xzf xhprof-2.1.0.tar.gz -C xhprof-2.1.0 --strip-components=1
     ( cd xhprof-2.1.0/extension && phpize && ./configure && make && make install )
     docker-php-ext-enable xhprof
+    cp ./conf.d/xhprof.ini /usr/local/etc/php/conf.d/
 fi
 
 if [ -z "${PHP_EXTENSIONS##*yaf*}" ]; then
     echo "-------- Install yaf --------"
     pecl install yaf-3.0.8
     docker-php-ext-enable yaf
+    cp ./conf.d/yaf.ini /usr/local/etc/php/conf.d/
 fi

@@ -17,6 +17,5 @@ RUN if [ "${PHP_EXTENSIONS}" ]; then \
         pecl channel-update pecl.php.net; \
     fi
 RUN chmod +x install.sh && sh install.sh && rm -fr /tmp/extensions
-COPY conf.d /usr/local/etc/php/conf.d/
 
 WORKDIR /www

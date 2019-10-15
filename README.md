@@ -47,4 +47,5 @@ Compose 文件格式: 3.7
 
 - [ ] 开源许可
 - [ ] Nginx 支持 HTTPS
+- [ ] Nginx 应用安装
 - [ ] 安装 PHP 扩展
