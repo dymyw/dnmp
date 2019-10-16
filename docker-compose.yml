@@ -13,6 +13,8 @@ services:
       - ${NGINX_CONFD_DIR}:/etc/nginx/conf.d/:rw
       - ${NGINX_CONF_FILE}:/etc/nginx/nginx.conf:ro
       - ${NGINX_LOG_DIR}:/var/log/nginx/:rw
+    networks:
+      - default
 
   php:
     build:
@@ -26,6 +28,8 @@ services:
       - ${PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
       - ${PHP_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
       - ${PHP_LOG_DIR}:/var/log/php:rw
+    networks:
+      - default
 
   mysql:
     image: mysql:${MYSQL_VERSION}
@@ -35,3 +39,19 @@ services:
       - ${MYSQL_CONF_FILE}:/etc/mysql/conf.d/mysql.cnf:ro
     environment:
       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+    networks:
+      - default
+
+  redis:
+    image: redis:${REDIS_VERSION}-alpine
+    ports:
+      - "${REDIS_HOST_PORT}:6379"
+    volumes:
+      - ${REDIS_CONF_FILE}:/etc/redis/redis.conf:ro
+      - ${REDIS_LOG_DIR}:/var/log/redis:rw
+    entrypoint: ["redis-server", "/etc/redis/redis.conf"]
+    networks:
+      - default
+
+networks:
+  default:

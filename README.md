@@ -2,6 +2,10 @@
 
 Docker + Nginx + MySQL + PHP 开发环境
 
+选配服务：
+
+- Redis
+
 ### 目录结构
 
     ├── logs                    日志目录
@@ -66,4 +70,6 @@ Compose 文件格式: 3.7
     - [x] 配置
     - [ ] 数据
     - [ ] 日志
-- [ ] Redis 服务
+- [x] Redis 服务
+    - [x] 配置
+    - [x] 日志

@@ -13,3 +13,10 @@ var_dump([
     'pdo'       => $pdo,
     'result'    => $result,
 ]);
+
+/**
+ * 测试 PHP 的 Redis 扩展
+ */
+$redis  = new Redis();
+$redis->connect('redis', 6379);
+var_dump($redis->get('name'));
