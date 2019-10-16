@@ -15,6 +15,21 @@ echo
 
 export EXTENSIONS=",${PHP_EXTENSIONS},"
 
+#
+# Install the extension using the *.tgz file downloaded from PECL
+#
+installByTgz()
+{
+    tgzName=$1
+    extensionName="${tgzName%%-*}"
+
+    mkdir ${extensionName}
+    tar -xzf ${tgzName}.tgz -C ${extensionName} --strip-components=1
+    ( cd ${extensionName} && phpize && ./configure && make ${MC} && make install )
+
+    docker-php-ext-enable ${extensionName}
+}
+
 if [ -z "${EXTENSIONS##*,amqp,*}" ]; then
     echo "-------- Install amqp --------"
     apt-get -y install --no-install-recommends librabbitmq-dev
@@ -204,8 +219,7 @@ fi
 
 if [ -z "${EXTENSIONS##*,redis,*}" ]; then
     echo "-------- Install redis --------"
-    pecl install redis-5.0.0
-    docker-php-ext-enable redis
+    installByTgz redis-5.0.0
 fi
 
 if [ -z "${EXTENSIONS##*,shmop,*}" ]; then
@@ -271,9 +285,7 @@ fi
 
 if [ -z "${EXTENSIONS##*,xdebug,*}" ]; then
     echo "-------- Install xdebug --------"
-    pecl install xdebug-2.6.0
-    docker-php-ext-enable xdebug
-    cp ./conf.d/xdebug.ini /usr/local/etc/php/conf.d/
+    installByTgz xdebug-2.6.0 1
 fi
 
 if [ -z "${EXTENSIONS##*,xhprof,*}" ]; then
@@ -282,7 +294,6 @@ if [ -z "${EXTENSIONS##*,xhprof,*}" ]; then
     tar -xzf xhprof-2.1.0.tar.gz -C xhprof-2.1.0 --strip-components=1
     ( cd xhprof-2.1.0/extension && phpize && ./configure && make ${MC} && make install )
     docker-php-ext-enable xhprof
-    cp ./conf.d/xhprof.ini /usr/local/etc/php/conf.d/
 fi
 
 if [ -z "${EXTENSIONS##*,xsl,*}" ]; then
@@ -307,7 +318,6 @@ if [ -z "${EXTENSIONS##*,yaf,*}" ]; then
     echo "-------- Install yaf --------"
     pecl install yaf-3.0.8
     docker-php-ext-enable yaf
-    cp ./conf.d/yaf.ini /usr/local/etc/php/conf.d/
 fi
 
 if [ -z "${EXTENSIONS##*,zend_test,*}" ]; then
