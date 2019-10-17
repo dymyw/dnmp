@@ -23,6 +23,7 @@ services:
         PHP_VERSION: ${PHP_VERSION}-fpm
         CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
         PHP_EXTENSIONS: ${PHP_EXTENSIONS}
+        TZ: "${TZ}"
     volumes:
       - ${WWW_DIR}:/www:rw
       - ${PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro

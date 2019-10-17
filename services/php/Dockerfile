@@ -3,6 +3,7 @@ FROM php:${PHP_VERSION}
 
 ARG CONTAINER_PACKAGE_URL
 ARG PHP_EXTENSIONS
+ARG TZ
 
 COPY ./extensions /tmp/extensions
 WORKDIR /tmp/extensions
@@ -17,5 +18,7 @@ RUN if [ "${PHP_EXTENSIONS}" ]; then \
         pecl channel-update pecl.php.net; \
     fi
 RUN chmod +x install.sh && sh install.sh && rm -fr /tmp/extensions
+
+RUN cp "/usr/share/zoneinfo/${TZ}" /etc/localtime
 
 WORKDIR /www
