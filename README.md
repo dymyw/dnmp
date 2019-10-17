@@ -8,16 +8,16 @@ Docker + Nginx + MySQL + PHP 开发环境
 
 ### 目录结构
 
-    ├── data                    数据目录
-    ├── logs                    日志目录
-    ├── services                服务构建文件和配置文件目录
+    ├── data                        数据目录
+    ├── logs                        日志目录
+    ├── services                    服务构建文件和配置文件目录
     │   ├── mysql
     │   ├── nginx
     │   ├── php
     │   └── redis
-    ├── www                     开发目录
-    ├── env.smaple              环境配置示例文件
-    └── docker-compose.yml      Docker 服务配置示例文件
+    ├── www                         开发目录
+    ├── env.smaple                  环境配置示例文件
+    └── docker-compose-sample.yml   Docker 服务配置示例文件
 
 ### 快速使用
 
@@ -34,6 +34,7 @@ Docker + Nginx + MySQL + PHP 开发环境
 
     $ cd dnmp
     $ cp .env.sample .env
+    $ cp docker-compose-sample.yml docker-compose.yml
     $ docker-compose up
 
 4、修改 `hosts`，新增
