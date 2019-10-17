@@ -1,0 +1,4 @@
+*
+!.gitignore
+!docker.lnmp.conf
+!docker.test.conf
