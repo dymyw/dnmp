@@ -50,6 +50,7 @@ services:
       - "${REDIS_HOST_PORT}:6379"
     volumes:
       - ${REDIS_CONF_FILE}:/etc/redis/redis.conf:ro
+      - ${REDIS_DATA_DIR}:/var/data/redis:rw
       - ${REDIS_LOG_DIR}:/var/log/redis:rw
     entrypoint: ["redis-server", "/etc/redis/redis.conf"]
     networks:
