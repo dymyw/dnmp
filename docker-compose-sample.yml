@@ -13,6 +13,7 @@ services:
       - ${NGINX_CONFD_DIR}:/etc/nginx/conf.d/:rw
       - ${NGINX_CONF_FILE}:/etc/nginx/nginx.conf:ro
       - ${NGINX_LOG_DIR}:/var/log/nginx/:rw
+    restart: always
     networks:
       - default
 
@@ -29,6 +30,7 @@ services:
       - ${PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
       - ${PHP_FPM_CONF_FILE}:/usr/local/etc/php-fpm.d/www.conf:rw
       - ${PHP_LOG_DIR}:/var/log/php:rw
+    restart: always
     networks:
       - default
 
@@ -42,6 +44,7 @@ services:
       - ${MYSQL_LOG_DIR}:/var/log/mysql:rw
     environment:
       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+    restart: always
     networks:
       - default
 
@@ -54,6 +57,7 @@ services:
       - ${REDIS_DATA_DIR}:/var/data/redis:rw
       - ${REDIS_LOG_DIR}:/var/log/redis:rw
     entrypoint: ["redis-server", "/etc/redis/redis.conf"]
+    restart: always
     networks:
       - default
 
