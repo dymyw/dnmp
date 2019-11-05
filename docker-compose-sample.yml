@@ -61,5 +61,17 @@ services:
     networks:
       - default
 
+  rabbitmq:
+    image: rabbitmq:${RABBITMQ_VERSION}
+    ports:
+      - "${RABBITMQ_HOST_PORT_C}:5672"
+      - "${RABBITMQ_HOST_PORT_S}:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: "${RABBITMQ_DEFAULT_USER}"
+      RABBITMQ_DEFAULT_PASS: "${RABBITMQ_DEFAULT_PASS}"
+    restart: always
+    networks:
+      - default
+
 networks:
   default:

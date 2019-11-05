@@ -5,6 +5,7 @@ Docker + Nginx + MySQL + PHP 开发环境
 选配服务：
 
 - Redis
+- RabbitMQ
 
 ### 目录结构
 
@@ -16,7 +17,7 @@ Docker + Nginx + MySQL + PHP 开发环境
     │   ├── php
     │   └── redis
     ├── www                         开发目录
-    ├── env.smaple                  环境配置示例文件
+    ├── env.sample                  环境配置示例文件
     └── docker-compose-sample.yml   Docker 服务配置示例文件
 
 ### 快速使用

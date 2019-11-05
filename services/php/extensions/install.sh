@@ -33,8 +33,7 @@ installByTgz()
 if [ -z "${EXTENSIONS##*,amqp,*}" ]; then
     echo "-------- Install amqp --------"
     apt-get -y install --no-install-recommends librabbitmq-dev
-    pecl install amqp-1.9.3
-    docker-php-ext-enable amqp
+    installByTgz amqp-1.9.3
 fi
 
 if [ -z "${EXTENSIONS##*,bcmath,*}" ]; then
@@ -285,7 +284,7 @@ fi
 
 if [ -z "${EXTENSIONS##*,xdebug,*}" ]; then
     echo "-------- Install xdebug --------"
-    installByTgz xdebug-2.6.0 1
+    installByTgz xdebug-2.6.0
 fi
 
 if [ -z "${EXTENSIONS##*,xhprof,*}" ]; then
@@ -316,8 +315,7 @@ fi
 
 if [ -z "${EXTENSIONS##*,yaf,*}" ]; then
     echo "-------- Install yaf --------"
-    pecl install yaf-3.0.8
-    docker-php-ext-enable yaf
+    installByTgz yaf-3.0.8
 fi
 
 if [ -z "${EXTENSIONS##*,zend_test,*}" ]; then
