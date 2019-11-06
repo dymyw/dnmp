@@ -3,8 +3,13 @@ port                    = 3306
 default-character-set   = utf8mb4
 
 [mysqld]
+port                    = 3306
 character-set-server    = utf8mb4
 default-time-zone       = '+8:00'
+sql_mode                = NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+
+skip-character-set-client-handshake
+explicit_defaults_for_timestamp
 
 slow_query_log
 long_query_time         = 3
@@ -13,3 +18,7 @@ log_error               = /var/log/mysql/mysql.error.log
 
 [mysql]
 default-character-set   = utf8mb4
+connect-timeout         = 3
+
+[mysqld_safe]
+open-files-limit        = 8192
