@@ -18,7 +18,7 @@ Docker + Nginx + MySQL + PHP 开发环境
     │   └── redis
     ├── www                         开发目录
     ├── env.sample                  环境配置示例文件
-    └── docker-compose-sample.yml   Docker 服务配置示例文件
+    └── docker-compose.sample.yml   Docker 服务配置示例文件
 
 ### 快速使用
 
@@ -35,7 +35,7 @@ Docker + Nginx + MySQL + PHP 开发环境
 
     $ cd dnmp
     $ cp .env.sample .env
-    $ cp docker-compose-sample.yml docker-compose.yml
+    $ cp docker-compose.sample.yml docker-compose.yml
     $ docker-compose up
 
 4、修改 `hosts`，新增

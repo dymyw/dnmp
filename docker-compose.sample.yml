@@ -12,6 +12,7 @@ services:
       - ${WWW_DIR}:/www:rw
       - ${NGINX_CONFD_DIR}:/etc/nginx/conf.d/:rw
       - ${NGINX_CONF_FILE}:/etc/nginx/nginx.conf:ro
+      - ${NGINX_FASTCGI_CONF_FILE}:/etc/nginx/fastcgi.conf:ro
       - ${NGINX_LOG_DIR}:/var/log/nginx/:rw
     restart: always
     networks:
