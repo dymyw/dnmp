@@ -245,8 +245,7 @@ fi
 
 if [ -z "${EXTENSIONS##*,swoole,*}" ]; then
     echo "-------- Install swoole --------"
-    pecl install swoole-4.4.8
-    docker-php-ext-enable swoole
+    installByTgz swoole-4.4.16
 fi
 
 if [ -z "${EXTENSIONS##*,sysvmsg,*}" ]; then
