@@ -68,6 +68,7 @@ services:
 
   rabbitmq:
     image: rabbitmq:${RABBITMQ_VERSION}
+    container_name: ${CONTAINER_NAME_PREFIX}rabbitmq
     ports:
       - "${RABBITMQ_HOST_PORT_C}:5672"
       - "${RABBITMQ_HOST_PORT_S}:15672"
