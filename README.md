@@ -15,6 +15,7 @@ Docker + Nginx + MySQL + PHP 开发环境
     │   ├── mysql
     │   ├── nginx
     │   ├── php
+    │   ├── rabbitmq
     │   └── redis
     ├── www                         开发目录
     ├── env.sample                  环境配置示例文件
@@ -64,7 +65,8 @@ Docker + Nginx + MySQL + PHP 开发环境
     # 要安装的扩展列表，用英文逗号隔开
     PHP_EXTENSIONS=pdo_mysql,mysqli,mbstring,gd,curl,redis
 
-然后重新构建 `php` 镜像 `docker-compose build php` 启动服务 `docker-compose up -d`。可用的扩展列表请查看 `.env.sample` 的注释块说明
+然后重新构建 `php` 镜像 `docker-compose build php` 启动服务 `docker-compose up -d`。  
+可用的扩展列表请查看 `.env.sample` 的注释块说明
 
 ### 日志说明
 
@@ -116,3 +118,4 @@ Compose 文件格式: 3.7
     - [ ] 5.6
 - [x] MySQL 服务
 - [x] Redis 服务
+- [x] RabbitMQ 服务

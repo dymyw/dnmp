@@ -52,32 +52,37 @@ services:
     networks:
       - default
 
-  redis:
-    image: redis:${REDIS_VERSION}-alpine
-    container_name: ${CONTAINER_NAME_PREFIX}redis
-    ports:
-      - "${REDIS_HOST_PORT}:6379"
-    volumes:
-      - ${REDIS_CONF_FILE}:/etc/redis/redis.conf:ro
-      - ${REDIS_DATA_DIR}:/var/data/redis:rw
-      - ${REDIS_LOG_DIR}:/var/log/redis:rw
-    entrypoint: ["redis-server", "/etc/redis/redis.conf"]
-    restart: always
-    networks:
-      - default
+#  redis:
+#    image: redis:${REDIS_VERSION}-alpine
+#    container_name: ${CONTAINER_NAME_PREFIX}redis
+#    ports:
+#      - "${REDIS_HOST_PORT}:6379"
+#    volumes:
+#      - ${REDIS_CONF_FILE}:/etc/redis/redis.conf:ro
+#      - ${REDIS_DATA_DIR}:/var/data/redis:rw
+#      - ${REDIS_LOG_DIR}:/var/log/redis:rw
+#    entrypoint: ["redis-server", "/etc/redis/redis.conf"]
+#    restart: always
+#    networks:
+#      - default
 
-  rabbitmq:
-    image: rabbitmq:${RABBITMQ_VERSION}
-    container_name: ${CONTAINER_NAME_PREFIX}rabbitmq
-    ports:
-      - "${RABBITMQ_HOST_PORT_C}:5672"
-      - "${RABBITMQ_HOST_PORT_S}:15672"
-    environment:
-      RABBITMQ_DEFAULT_USER: "${RABBITMQ_DEFAULT_USER}"
-      RABBITMQ_DEFAULT_PASS: "${RABBITMQ_DEFAULT_PASS}"
-    restart: always
-    networks:
-      - default
+#  rabbitmq:
+#    build:
+#      context: ./services/rabbitmq
+#      args:
+#        RABBITMQ_VERSION: ${RABBITMQ_VERSION}-management
+#        RABBITMQ_PLUGINS: ${RABBITMQ_PLUGINS}
+#    container_name: ${CONTAINER_NAME_PREFIX}rabbitmq
+#    ports:
+#      - "${RABBITMQ_HOST_PORT_C}:5672"
+#      - "${RABBITMQ_HOST_PORT_S}:15672"
+#    environment:
+#      RABBITMQ_DEFAULT_USER: "${RABBITMQ_DEFAULT_USER}"
+#      RABBITMQ_DEFAULT_PASS: "${RABBITMQ_DEFAULT_PASS}"
+#      RABBITMQ_DEFAULT_VHOST: "${RABBITMQ_DEFAULT_VHOST}"
+#    restart: always
+#    networks:
+#      - default
 
 networks:
   default:
