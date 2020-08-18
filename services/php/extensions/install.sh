@@ -87,6 +87,11 @@ if [ -z "${EXTENSIONS##*,gmp,*}" ]; then
     docker-php-ext-install ${MC} gmp
 fi
 
+if [ -z "${EXTENSIONS##*,grpc,*}" ]; then
+    echo "-------- Install grpc --------"
+    installByTgz grpc-1.31.0
+fi
+
 if [ -z "${EXTENSIONS##*,imagick,*}" ]; then
     echo "-------- Install imagick --------"
     apt-get -y install --no-install-recommends libmagickwand-dev
