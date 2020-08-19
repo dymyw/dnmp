@@ -89,6 +89,7 @@ fi
 
 if [ -z "${EXTENSIONS##*,grpc,*}" ]; then
     echo "-------- Install grpc --------"
+    apt-get -y install --no-install-recommends libz-dev
     installByTgz grpc-1.31.0
 fi
 
