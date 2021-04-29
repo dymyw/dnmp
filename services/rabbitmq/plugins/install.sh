@@ -15,3 +15,8 @@ if [ -z "${PLUGINS##*,rabbitmq_delayed_message_exchange,*}" ]; then
     echo "-------- Install rabbitmq_delayed_message_exchange --------"
     rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 fi
+
+if [ -z "${PLUGINS##*,rabbitmq_tracing,*}" ]; then
+    echo "-------- Install rabbitmq_tracing --------"
+    rabbitmq-plugins enable rabbitmq_tracing
+fi
